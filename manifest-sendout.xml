@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:type="MailApp" 
+ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+  <Id>b869390b-26e2-4c61-8f4e-c769ea672e59</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Shabaz</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Sendout"/>
+  <Description DefaultValue="Curates links and pins right on outlook app" />
+  <IconUrl DefaultValue="https://eedcb027.ngrok.io/images/icon.png"/>
+  <HighResolutionIconUrl DefaultValue="https://eedcb027.ngrok.io/images/icon.png"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://eedcb027.ngrok.io/"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+
+  </FormSettings>
+
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="funcFile"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadCmdGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="msgReadPaneButton">
+                  <Label resid="msgReadPaneButtonLabel"/>
+                  <Supertip>
+                    <Title resid="msgReadPaneButtonTitle"/>
+                    <Description resid="msgReadPaneButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon-16"/>
+                    <bt:Image size="32" resid="icon-32"/>
+                    <bt:Image size="80" resid="icon-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskPaneUrl1"/>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="Test1d">
+                  <Label resid="groupLabel"/>
+                  <Supertip>
+                    <Title resid="groupLabel"/>
+                    <Description resid="groupLabel"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon-16"/>
+                    <bt:Image size="32" resid="icon-32"/>
+                    <bt:Image size="80" resid="icon-80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>statusUpdate</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+
+            </OfficeTab>
+
+          </ExtensionPoint>
+
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon-16" DefaultValue="https://eedcb027.ngrok.io/images/icon-16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://eedcb027.ngrok.io/images/icon-32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://eedcb027.ngrok.io/images/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="funcFile" DefaultValue="https://eedcb027.ngrok.io/FunctionFile/Functions.html"/>
+        <bt:Url id="taskPaneUrl1" DefaultValue="https://eedcb027.ngrok.io/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Sample Add-in"/>
+        <bt:String id="msgReadPaneButtonLabel" DefaultValue="See message details"/>
+        <bt:String id="msgReadPaneButtonTitle" DefaultValue="See message details"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="msgReadPaneButtonDesc" DefaultValue="Opens a task pane showing the subject and sender of the currently selected message"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
